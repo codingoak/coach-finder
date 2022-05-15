@@ -29,7 +29,6 @@ export default {
   methods: {
     submitForm() {
       this.formIsValid = true;
-
       if (
         this.email === "" ||
         !this.email.includes("@") ||
@@ -38,6 +37,12 @@ export default {
         this.formIsValid = false;
         return;
       }
+      this.$store.dispatch("requests/contactCoach", {
+        email: this.email,
+        message: this.message,
+        coachId: this.$route.id,
+      });
+      this.$router.replace("/coaches");
     },
   },
 };

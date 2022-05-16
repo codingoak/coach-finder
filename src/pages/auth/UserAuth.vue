@@ -14,9 +14,9 @@
         <input type="password" id="password" v-model.trim="password" />
       </div>
       <base-button>{{ submitButtonCaption }}</base-button>
-      <base-button type="button" mode="flat" @click="switchAuthMode">{{
-        switchModeButtonCaption
-      }}</base-button>
+      <base-button type="button" mode="flat" @click="switchAuthMode">
+        {{ switchModeButtonCaption }}
+      </base-button>
     </form>
   </base-card>
 </template>

@@ -40,6 +40,7 @@ a {
   color: white;
   cursor: pointer;
   border-radius: 30px;
+  margin-top: 0.5rem;
   margin-right: 0.5rem;
   display: inline-block;
 }

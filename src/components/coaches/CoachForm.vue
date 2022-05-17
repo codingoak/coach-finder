@@ -27,7 +27,7 @@
         rows="5"
         v-model.trim="description.val"
         @blur="clearValidity('description')"
-      />
+      ></textarea>
       <p v-if="!description.isValid">Description must not be empty.</p>
     </div>
     <div class="form-control" :class="{ invalid: !rate.isValid }">

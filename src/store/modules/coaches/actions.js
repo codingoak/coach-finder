@@ -1,16 +1,19 @@
 export default {
-  async registerCoach(context, payload) {
+  async registerCoach(context, data) {
     const userId = context.rootGetters.userId;
     const coachData = {
-      firstName: payload.first,
-      lastName: payload.last,
-      description: payload.desc,
-      hourlyRate: payload.rate,
-      areas: payload.areas,
+      firstName: data.first,
+      lastName: data.last,
+      description: data.desc,
+      hourlyRate: data.rate,
+      areas: data.areas,
     };
 
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://coach-finder-51930-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+      `https://coach-finder-51930-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json?auth=` +
+        token,
       {
         method: "PUT",
         body: JSON.stringify(coachData),
@@ -20,7 +23,7 @@ export default {
     // const responseData = await response.json();
 
     if (!response.ok) {
-      // error...
+      // error ...
     }
 
     context.commit("registerCoach", {
@@ -39,7 +42,7 @@ export default {
     const responseData = await response.json();
 
     if (!response.ok) {
-      const error = new Error(responseData.message || "Failed to fetch");
+      const error = new Error(responseData.message || "Failed to fetch!");
       throw error;
     }
 

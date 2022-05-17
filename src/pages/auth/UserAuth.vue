@@ -21,9 +21,9 @@
           long).
         </p>
         <base-button>{{ submitButtonCaption }}</base-button>
-        <base-button type="button" mode="flat" @click="switchAuthMode">
-          {{ switchModeButtonCaption }}
-        </base-button>
+        <base-button type="button" mode="flat" @click="switchAuthMode">{{
+          switchModeButtonCaption
+        }}</base-button>
       </form>
     </base-card>
   </div>
@@ -31,6 +31,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      formIsValid: true,
+      mode: "login",
+      isLoading: false,
+      error: null,
+    };
+  },
   computed: {
     submitButtonCaption() {
       if (this.mode === "login") {
@@ -46,16 +56,6 @@ export default {
         return "Login instead";
       }
     },
-  },
-  data() {
-    return {
-      email: "",
-      password: "",
-      formIsValid: true,
-      mode: "login",
-      isLoading: false,
-      error: null,
-    };
   },
   methods: {
     async submitForm() {

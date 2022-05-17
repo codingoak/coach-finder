@@ -42,13 +42,11 @@
 
 <script>
 import CoachItem from "../../components/coaches/CoachItem.vue";
-import BaseButton from "@/components/ui/BaseButton.vue";
 import CoachFilter from "../../components/coaches/CoachFilter.vue";
 
 export default {
   components: {
     CoachItem,
-    BaseButton,
     CoachFilter,
   },
   data() {
@@ -63,6 +61,9 @@ export default {
     };
   },
   computed: {
+    isCoach() {
+      return this.$store.getters["coaches/isCoach"];
+    },
     filteredCoaches() {
       const coaches = this.$store.getters["coaches/coaches"];
       return coaches.filter((coach) => {
@@ -80,9 +81,6 @@ export default {
     },
     hasCoaches() {
       return !this.isLoading && this.$store.getters["coaches/hasCoaches"];
-    },
-    isCoach() {
-      return this.$store.getters["coaches/isCoach"];
     },
   },
   created() {

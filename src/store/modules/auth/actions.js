@@ -17,7 +17,7 @@ export default {
     if (!response.ok) {
       console.log(responseData);
       const error = new Error(
-        responseData.message || "Failed to authenticate. Check your login"
+        responseData.message || "Failed to authenticate. Check your login data."
       );
       throw error;
     }
@@ -47,7 +47,7 @@ export default {
     if (!response.ok) {
       console.log(responseData);
       const error = new Error(
-        responseData.message || "Failed to authenticate. Check your login"
+        responseData.message || "Failed to authenticate. Check your login data."
       );
       throw error;
     }
